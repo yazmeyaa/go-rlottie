@@ -1,3 +1,3 @@
-module github.com/arugaz/go-rlottie
+module github.com/yazmeyaa/go-rlottie
 
 go 1.18
