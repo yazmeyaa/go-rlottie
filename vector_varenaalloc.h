@@ -60,6 +60,7 @@
 // there are 71 allocations.
 class VArenaAlloc {
 public:
+    VArenaAlloc::VArenaAlloc();
     VArenaAlloc(char* block, size_t blockSize, size_t firstHeapAllocation);
 
     explicit VArenaAlloc(size_t firstHeapAllocation)

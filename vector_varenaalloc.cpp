@@ -16,6 +16,16 @@ static uint32_t first_allocated_block(uint32_t blockSize, uint32_t firstHeapAllo
            blockSize           > 0 ? blockSize           : 1024;
 }
 
+VArenaAlloc::VArenaAlloc()
+    : fDtorCursor(nullptr)
+    , fCursor(nullptr)
+    , fEnd(nullptr)
+    , fFirstBlock(nullptr)
+    , fFirstSize(0)
+    , fFirstHeapAllocationSize(0)
+{}
+
+
 VArenaAlloc::VArenaAlloc(char* block, size_t size, size_t firstHeapAllocation)
     : fDtorCursor {block}
     , fCursor     {block}
@@ -38,7 +48,6 @@ VArenaAlloc::~VArenaAlloc() {
 }
 
 void VArenaAlloc::reset() {
-    this->~VArenaAlloc();
     new (this) VArenaAlloc{fFirstBlock, fFirstSize, fFirstHeapAllocationSize};
 }
 
